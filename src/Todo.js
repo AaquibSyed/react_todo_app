@@ -1,8 +1,12 @@
 import React from "react";
 
 const Todo = ({ filtered_todo, todos, setTodos }) => {
-  const deleteHandler = () => {
-    setTodos(todos.filter((el) => el.id !== filtered_todo.id));
+  const deleteHandler = (e) => {
+    const parentEl = e.target.parentElement;
+    parentEl.classList.add("fall");
+    setTimeout(() => {
+      setTodos(todos.filter((el) => el.id !== filtered_todo.id));
+    }, 500);
   };
   const completeHandler = () => {
     setTodos(
