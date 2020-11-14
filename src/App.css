@@ -3,18 +3,12 @@
   box-sizing: border-box;
 }
 body {
-  background-image: linear-gradient(45deg, #498de6 0%, #fda085 100%);
+  background-image: linear-gradient(45deg, #9b1ad6 30%, #cfb9b9 100%);
   color: white;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
 }
-@media only screen and (max-width: 620px) {
-  /* For mobile phones: */
-  .App {
-    width: 100%;
-    margin: 25px;
-  }
-}
+
 header {
   font-size: 2rem;
 }
@@ -34,13 +28,13 @@ form button {
   background: white;
 }
 form button {
-  color: #2b75e4;
+  color: #df691b;
   background: #f7fffe;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 form button:hover {
-  background: #4759ff;
+  background: #df691b;
   color: white;
 }
 .todo-container {
@@ -127,7 +121,7 @@ select {
   overflow: hidden;
 }
 select {
-  color: #2b75e4;
+  color: #df691b;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   width: 12rem;
@@ -139,9 +133,33 @@ select {
   top: 0;
   right: 0;
   padding: 1rem;
-  background: #2b75e4;
+  background: #df691b;
   cursor: pointer;
   pointer-events: none;
+}
+@media only screen and (max-width: 900px) {
+  /* For mobile phones: */
+  .body {
+    width: 60%;
+  }
+  .todo-input {
+    width: 75%;
+  }
+  .select {
+    font-size: smaller;
+  }
+}
+@media screen and (max-width: 350px) and (min-width: 200px) {
+  /* For mobile phones: */
+  .todo-input {
+    width: 76%;
+  }
+  .select {
+    width: 70%;
+  }
+  .todo-item {
+    font-size: small;
+  }
 }
 /* Transition */
 /*

@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <header>Aaquib's TODO List</header>
+        <header>TODO List</header>
         <Form
           setInputText={setInputText}
           inputText={inputText}
