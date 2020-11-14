@@ -1,25 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import TodoList from "./components/TodoList";
 
 function App() {
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [status, setStatus] = useState("all");
+  const [filteredTodos, setFilteredTodos] = useState([]);
+
+  useEffect(() => {
+    // getLocalTodos();
+    if (localStorage.getItem("localTodos") === null) {
+      localStorage.setItem("localTodos", JSON.stringify([]));
+    } else {
+      let local = JSON.parse(localStorage.getItem("localTodos"));
+      setTodos(local);
+    }
+  }, []);
+  useEffect(() => {
+    switch (status) {
+      case "completed":
+        setFilteredTodos(todos.filter((todo) => todo.completed === true));
+        break;
+      case "incomplete":
+        setFilteredTodos(todos.filter((todo) => todo.completed === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+    // saveToLocalStorage();
+    localStorage.setItem("localTodos", JSON.stringify(todos));
+  }, [status, todos]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <header>Aaquib's TODO List</header>
+        <Form
+          setInputText={setInputText}
+          inputText={inputText}
+          setTodos={setTodos}
+          todos={todos}
+          setStatus={setStatus}
+        />
+        <TodoList
+          filteredTodos={filteredTodos}
+          todos={todos}
+          setTodos={setTodos}
+        />
+      </div>
+    </>
   );
 }
 
