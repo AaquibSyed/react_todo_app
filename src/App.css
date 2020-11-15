@@ -8,6 +8,17 @@ body {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
 }
+.dark {
+  background-image: linear-gradient(
+    45deg,
+    #020202 80%,
+    #3b3737 120%
+  ) !important;
+}
+.dark-btn {
+  background-color: black !important;
+  color: white !important;
+}
 
 header {
   font-size: 2rem;
@@ -95,6 +106,20 @@ form button:hover {
   text-decoration: line-through;
   opacity: 0.5;
 }
+.darkSwitchDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.darkSwitch {
+  background-color: white;
+  height: 3rem;
+  width: 15rem;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 20px;
+}
 
 /*CUSTOM SELECTOR */
 select {
@@ -149,7 +174,7 @@ select {
     font-size: smaller;
   }
 }
-@media screen and (max-width: 350px) and (min-width: 200px) {
+@media screen and (max-width: 450px) {
   /* For mobile phones: */
   .todo-input {
     width: 76%;
@@ -159,6 +184,10 @@ select {
   }
   .todo-item {
     font-size: small;
+    width: 150%;
+  }
+  body {
+    background-image: linear-gradient(45deg, #1d024e 30%, #cfb9b9 100%);
   }
 }
 /* Transition */

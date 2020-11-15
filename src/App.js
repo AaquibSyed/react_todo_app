@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
@@ -8,6 +8,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [dark,setDark] = useState(false)
 
   useEffect(() => {
     // getLocalTodos();
@@ -34,6 +35,15 @@ function App() {
     localStorage.setItem("localTodos", JSON.stringify(todos));
   }, [status, todos]);
 
+  const switchLight = () =>{
+    setDark(!dark)
+    const body = document.getElementsByTagName('BODY')[0];
+    const darkSwitch = document.getElementsByClassName('darkSwitch')[0]
+    console.log(darkSwitch)
+     body.classList.toggle('dark')
+     darkSwitch.classList.toggle('dark-btn')
+  }
+
   return (
     <>
       <div className="App">
@@ -50,6 +60,9 @@ function App() {
           todos={todos}
           setTodos={setTodos}
         />
+        <div className='darkSwitchDiv'>
+        <button className="darkSwitch" onClick={switchLight}>{dark?'Light':'Dark'} mode</button>
+        </div>
       </div>
     </>
   );
